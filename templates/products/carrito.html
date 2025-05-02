@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Carrito</h1>
+{% if productos %}
+  <ul>
+    {% for producto in productos %}
+      <li>{{ producto.nombre }} — {{ producto.cantidad }} unidad(es)</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Tu carrito está vacío</p>
+{% endif %}
+{% endblock %}

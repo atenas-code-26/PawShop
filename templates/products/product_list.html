@@ -3,23 +3,43 @@
 {% block title %}Tienda - PawShop{% endblock %}
 
 {% block content %}
-    <h1>Productos para perros 🐶</h1>
-   
-    {% if productos %}
-        <ul>
-            {% for producto in productos %}
-                <li>
-                    <h2>{{ producto.nombre }}</h2>
-                    <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
-                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" width="200">
-                    <p>{{ producto.descripcion|truncatewords:25 }}</p>
-                    <p><em>Publicado el {{ producto.fecha_publicacion }}</em></p>
-                    <a href="{% url 'detalle_producto' producto.pk %}">Ver más</a>
-                </li>
-                <hr>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No hay productos aún 😢</p>
-    {% endif %}
+<h1 style="text-align:center;">Productos para perros 🐶</h1>
+
+<!-- BOTONES DE CATEGORÍAS -->
+<h3>Categorías</h3>
+<ul style="list-style-type: none; padding-left: 0;">
+  {% for cat in categorias %}
+    <li style="display: inline-block; margin-right: 10px;">
+      <a href="{% url 'productos_por_categoria' cat.id %}" style="background-color: #dfe6e9; padding: 8px 12px; border-radius: 5px; text-decoration: none; color: #2d3436;">
+        {{ cat.nombre }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<!-- LISTADO DE PRODUCTOS -->
+{% if productos %}
+  <ul style="list-style: none; padding-left: 0;">
+    {% for producto in productos %}
+      <li style="margin-bottom: 30px; border: 1px solid #ddd; padding: 15px; border-radius: 10px;">
+        <h2>{{ producto.nombre }}</h2>
+        <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" width="200">
+        <p>{{ producto.descripcion|truncatewords:25 }}</p>
+
+        <!-- BOTÓN DE COMPRAR -->
+        <form action="{% url 'agregar_al_carrito' producto.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" style="padding:8px 12px; background-color:#2196F3; color:white; border:none; border-radius:5px; margin-top:10px;">
+            Comprar 🛒
+          </button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No hay productos aún 😳</p>
+{% endif %}
 {% endblock %}
