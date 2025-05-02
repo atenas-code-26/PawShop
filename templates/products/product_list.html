@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Tienda - PawShop{% endblock %}
+
+{% block content %}
+    <h1>Productos para perros 🐶</h1>
+   
+    {% if productos %}
+        <ul>
+            {% for producto in productos %}
+                <li>
+                    <h2>{{ producto.nombre }}</h2>
+                    <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" width="200">
+                    <p>{{ producto.descripcion|truncatewords:25 }}</p>
+                    <p><em>Publicado el {{ producto.fecha_publicacion }}</em></p>
+                    <a href="{% url 'detalle_producto' producto.pk %}">Ver más</a>
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay productos aún 😢</p>
+    {% endif %}
+{% endblock %}

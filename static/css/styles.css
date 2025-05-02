@@ -1,0 +1,112 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo y tipografía general */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f6f8fa;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Contenedor central */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h1, h2 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+/* Navbar */
+nav {
+    background-color: #2c3e50;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Botones */
+button,
+input[type="submit"] {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #005fa3;
+}
+
+/* Enlaces */
+a {
+    color: #0077cc;
+}
+
+a:hover {
+    color: #004e8c;
+}
+
+/* Formularios */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+/* Imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.9em;
+    color: #777;
+}

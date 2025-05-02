@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+  <h1>Bienvenido a PawShop 🐾</h1>
+  <p>Tu tienda de confianza para consentir a tu perro 🐶</p>
+  <a href={% url 'lista_productos' %}>Ir a la tienda</a>
+{% endblock %}
