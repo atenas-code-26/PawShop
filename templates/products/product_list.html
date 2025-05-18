@@ -5,6 +5,11 @@
 {% block content %}
 <h1 style="text-align:center;">Productos para perros 🐶</h1>
 
+{% if user.is_staff %}
+  <a href="{% url 'crear_producto' %}" style="background-color: #4CAF50; padding: 8px 12px; border-radius: 5px; color: white; text-decoration: none;">+ Agregar producto</a>
+  <br><br>
+{% endif %}
+
 <!-- BOTONES DE CATEGORÍAS -->
 <h3>Categorías</h3>
 <ul style="list-style-type: none; padding-left: 0;">
@@ -36,10 +41,17 @@
             Comprar 🛒
           </button>
         </form>
+
+        {% if user.is_staff %}
+          <div style="margin-top: 10px;">
+            <a href="{% url 'editar_producto' producto.id %}" style="padding: 6px 12px; background-color: #f0ad4e; color: white; border-radius: 5px; text-decoration: none; margin-right: 5px;">Editar</a>
+            <a href="{% url 'eliminar_producto' producto.id %}" style="padding: 6px 12px; background-color: #d9534f; color: white; border-radius: 5px; text-decoration: none;">Eliminar</a>
+          </div>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
 {% else %}
-  <p>No hay productos aún 😳</p>
+  <p>No hay productos disponibles.</p>
 {% endif %}
 {% endblock %}

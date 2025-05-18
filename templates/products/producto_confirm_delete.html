@@ -1,0 +1,18 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <div style="max-width: 500px; margin: auto; background-color: #fff0f0; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);">
+    <h2 style="color: #d9534f; text-align: center;">Eliminar Producto</h2>
+    <p style="text-align: center;">¿Estás seguro de que querés eliminar <strong>"{{ object.nombre }}"</strong>?</p>
+   
+    <form method="post" style="text-align: center; margin-top: 20px;">
+      {% csrf_token %}
+      <button type="submit" style="background-color: #d9534f; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+        Sí, eliminar
+      </button>
+      <a href="{% url 'lista_productos' %}" style="margin-left: 10px; padding: 10px 20px; background-color: #5bc0de; color: white; border-radius: 5px; text-decoration: none;">
+        Cancelar
+      </a>
+    </form>
+  </div>
+{% endblock %}

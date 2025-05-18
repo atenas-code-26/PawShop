@@ -1,13 +1,31 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<h1>Carrito</h1>
+<h1 style="text-align: center;">Carrito</h1>
+
 {% if productos %}
-  <ul>
+  <ul style="list-style: none; padding-left: 0;">
     {% for producto in productos %}
-      <li>{{ producto.nombre }} — {{ producto.cantidad }} unidad(es)</li>
+      <li style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+        <span>{{ producto.nombre }} — {{ producto.cantidad }} unidad(es)</span>
+        <form action="{% url 'eliminar_del_carrito' producto.id %}" method="post" style="display:inline">
+          {% csrf_token %}
+          <button type="submit" title="Eliminar del carrito" style="background: none; border: none; cursor: pointer; font-size: 18px; color: #dc3545;">
+            🗑️
+          </button>
+        </form>
+      </li>
     {% endfor %}
   </ul>
 {% else %}
-  <p>Tu carrito está vacío</p>
+  <p style="text-align: center;">Tu carrito está vacío</p>
 {% endif %}
+
+<hr>
+<div style="display: flex; justify-content: center; margin-top: 30px;">
+  <button style="background-color: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+    Confirmar compra
+  </button>
+</div>
+
 {% endblock %}

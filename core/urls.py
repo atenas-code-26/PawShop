@@ -12,6 +12,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='products/login.html'), name='login'),
     path('logout/', logout_view, name='logout'),
     path('', home_view, name='home'),
+    path('accounts/', include('accounts.urls')),
 ]
 
 if settings.DEBUG:
